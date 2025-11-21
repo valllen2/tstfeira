@@ -1,0 +1,365 @@
+/* ======================================= */
+/* VARIÁVEIS CSS (PROFISSIONAL) */
+/* ======================================= */
+:root {
+    --cor-fundo: #f8f8f8;
+    --cor-primaria: #000000; /* Preto forte para contraste */
+    --cor-destaque: #333333; /* Cinza escuro para detalhes */
+    --cor-secundaria: #666666; /* Cinza claro para texto secundário */
+    --fonte-titulo: 'Playfair Display', serif;
+    --fonte-corpo: 'Montserrat', sans-serif;
+    --sombra-card: 0 10px 20px rgba(0, 0, 0, 0.15), 0 6px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ======================================= */
+/* 1. ESTILOS GERAIS */
+/* ======================================= */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--fonte-corpo);
+    background-color: var(--cor-fundo);
+    overflow-x: hidden;
+    color: var(--cor-primaria);
+    line-height: 1.6;
+}
+
+/* TÍTULOS DE SEÇÃO */
+.section-title {
+    font-family: var(--fonte-titulo);
+    text-align: center;
+    color: var(--cor-destaque);
+    font-size: 2.5em;
+    margin: 80px 0 60px 0;
+    border-bottom: 2px solid var(--cor-destaque);
+    display: inline-block;
+    padding-bottom: 10px;
+}
+.galeria-principal {
+    padding: 50px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* ======================================= */
+/* 2. BARRA DE NAVEGAÇÃO (NAVBAR) */
+/* ======================================= */
+.navbar {
+    position: sticky; /* Fixo ao rolar */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95); /* Semi-transparente elegante */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    z-index: 100;
+    padding: 15px 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    font-family: var(--fonte-titulo);
+    font-size: 1.8em;
+    color: var(--cor-primaria);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--cor-destaque);
+    font-weight: 600;
+    padding: 10px 15px;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--cor-primaria);
+    border-bottom: 2px solid var(--cor-destaque);
+}
+
+/* ======================================= */
+/* 3. HEADER / HERO */
+/* ======================================= */
+.header-content {
+    /* Use um nome de arquivo melhor e defina o estilo */
+    background-image: url('Captura\ de\ tela\ 2025-10-30\ 173540.png'); /* Assumindo que você renomeou o arquivo */
+    background-size: cover;
+    background-position: center;
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff; /* Texto branco */
+    position: relative;
+    z-index: 10;
+    
+    /* Filtro para escurecer a imagem e garantir a legibilidade */
+    filter: brightness(0.75); 
+}
+
+.header-content h1 { 
+    font-family: var(--fonte-titulo);
+    font-size: 4em; 
+    margin-bottom: 0.3em; 
+    color: #ffffff; 
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.76);
+}
+.header-content p { 
+    font-size: 1.5em; 
+    max-width: 800px; 
+    line-height: 1.5; 
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.76);
+
+}
+
+.cta-button {
+    background-color: var(--cor-destaque);
+    color: var(--cor-fundo);
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-weight: 600;
+    margin-top: 30px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.cta-button:hover {
+    background-color: var(--cor-secundaria);
+    transform: translateY(-2px);
+}
+
+/* ======================================= */
+/* 4. ESTILOS DO CARD DE ARTE (FLIP CARD 3D) */
+/* ======================================= */
+
+.item-galeria {
+    perspective: 1000px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 100px auto; /* Espaçamento reduzido para parecer mais compacto */
+    min-height: 400px; 
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    width: 100%; 
+    max-width: 95%; 
+}
+
+.quadro-giratorio {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.7s ease-out; /* TRANSITION REDUZIDA */
+    z-index: 20; 
+}
+
+.item-galeria.clicado .quadro-giratorio {
+    transform: rotateY(360deg) translateX(-60%); 
+}
+
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; 
+    box-shadow: var(--sombra-card); /* Sombra mais sutil */
+    border-radius: 5px; 
+    overflow: hidden; 
+}
+
+.face img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* A FACE DE TRÁS AGORA É PADRONIZADA */
+.face.back {
+    background-color: #ffffff; /* Fundo branco limpo */
+    transform: rotateY(180deg);
+}
+
+/* CONFIGURAÇÃO DO PAINEL DE DESCRIÇÃO LATERAL */
+.painel-descricao {
+    padding: 30px;
+    background: #ffffff; 
+    border-left: 3px solid var(--cor-destaque); /* Linha de destaque */
+    position: absolute;
+    left: 50%; 
+    transform: translateX(100%); 
+    opacity: 0;
+    transition: transform 0.7s ease-out 0.2s, opacity 0.7s ease-out 0.2s; 
+    z-index: 10;
+    height: auto; 
+    min-height: 100%; 
+    border-radius: 0 8px 8px 0;
+    box-shadow: var(--sombra-card); 
+    color: var(--cor-destaque);
+    font-size: 0.9em;
+}
+
+.item-galeria.clicado .painel-descricao {
+    transform: translateX(0); 
+    opacity: 1;
+}
+
+.painel-descricao h3 {
+    font-family: var(--fonte-titulo);
+    font-size: 1.6em;
+    color: var(--cor-primaria);
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+.painel-descricao p {
+    margin: 5px 0;
+    color: var(--cor-secundaria);
+}
+.painel-descricao strong {
+    color: var(--cor-destaque);
+}
+
+.btn-detalhes {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 15px;
+    background-color: var(--cor-destaque);
+    color: var(--cor-fundo);
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+.btn-detalhes:hover {
+    background-color: var(--cor-primaria);
+}
+
+
+/* ======================================= */
+/* 5. CLASSES DE TAMANHO PADRÃO/EXCEÇÃO */
+/* ======================================= */
+
+/* PADRÃO HORIZONTAL (450x300 - LEVEMENTE MAIS BAIXO QUE O ORIGINAL) */
+.quadro-giratorio {
+    width: 450px; 
+    height: 300px; 
+}
+.painel-descricao {
+    width: 400px; 
+}
+
+/* EXCEÇÃO VERTICAL (QUADRO 06: O GRITO) */
+.item-galeria.quadro-06 .quadro-giratorio {
+    width: 300px; 
+    height: 450px; 
+}
+.item-galeria.quadro-06 .painel-descricao {
+    width: 350px; 
+}
+
+/* ======================================= */
+/* 6. RODAPÉ (FOOTER) */
+/* ======================================= */
+footer {
+    background-color: var(--cor-destaque);
+    color: var(--cor-fundo);
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 100px;
+}
+.footer-content p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+.social-links a {
+    color: var(--cor-fundo);
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+.social-links a:hover {
+    color: #aaaaaa;
+}
+
+/* ======================================= */
+/* 7. RESPONSIVIDADE (PARA TELAS < 800px) */
+/* ======================================= */
+@media (max-width: 800px) {
+    
+    .navbar {
+        padding: 10px 0;
+    }
+    .nav-container {
+        flex-direction: column;
+    }
+    .nav-links {
+        margin-top: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .nav-links a {
+        padding: 5px 10px;
+        font-size: 0.9em;
+    }
+    
+    .header-content h1 {
+        font-size: 2.5em;
+    }
+    .header-content p {
+        font-size: 1.1em;
+    }
+
+    .item-galeria {
+        flex-direction: column; 
+        min-height: auto; 
+        margin: 50px auto; 
+        width: 90%; 
+    }
+
+    /* Unifica o tamanho dos quadros para mobile */
+    .quadro-giratorio, .item-galeria.quadro-06 .quadro-giratorio {
+        width: 100%; 
+        max-width: 350px;
+        height: 400px; 
+    }
+
+    .item-galeria.clicado .quadro-giratorio {
+        transform: rotateY(360deg) translateX(0); 
+    }
+
+    .painel-descricao, .item-galeria.quadro-06 .painel-descricao {
+        position: relative; 
+        left: auto; 
+        margin-top: 20px;
+        transform: translateY(100%); 
+        width: 100%; 
+        max-width: 350px;
+        border-left: none;
+        border-top: 3px solid var(--cor-destaque);
+        border-radius: 5px; 
+        height: auto; 
+    }
+
+    .item-galeria.clicado .painel-descricao {
+        transform: translateY(0); 
+    }
+    }
